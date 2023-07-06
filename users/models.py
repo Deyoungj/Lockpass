@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .custom_manager import CustomUserManager
-
+from django.utils import timezone
 
 
 
@@ -16,5 +16,9 @@ class User(AbstractUser):
 
     REQUIRED_FIELDS = ['username']
 
+
     def __str__(self):
         return self.email
+
+
+
