@@ -25,8 +25,16 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise ValidationError("This Email already exists")
 
         return super().validate(attrs)
+    
 
 
+    def create(self, validated_data):
 
-class LoginSerializer(serializers.ModelSerializer):
-    pass
+        password = validated_data.pop("password")
+
+        user = super().create(validated_data)
+        user.set_password(password)
+        user.save()
+
+        return user
+

@@ -6,7 +6,7 @@ from users.models import User
 
 
 class Passwords(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="passwords")
     site_name = models.CharField(max_length=100)
     site_password = models.CharField(max_length=200)
     date_added = models.DateTimeField(default=timezone.now)
