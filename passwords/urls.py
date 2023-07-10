@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.passwords, name='passwords')
+    path('api/', views.passwords, name='passwords')
 ]

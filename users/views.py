@@ -3,7 +3,7 @@ from rest_framework import status, generics, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
-from .serializers import RegisterSerializer
+from .serializers import RegisterSerializer, LoginSerializer
 from .tokens import get_tokens_for_user
 
 
@@ -37,10 +37,18 @@ class LoginView(APIView):
 
     def post(self, request):
         
-        email = request.data.get('email')
-        password = request.data.get('password')
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+        # email = request.data.get('email')
+        # password = request.data.get('password')
+
+            email = serializer.data['email']
+            password = serializer.data['password']
+            print("email: ",email)
+            print("password: ",password)
 
         user = authenticate(email=email, password=password)
+        
 
         if user is not None:
 
