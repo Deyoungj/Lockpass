@@ -7,5 +7,5 @@ class PasswordsSerializers(serializers.ModelSerializer):
     # passwords = serializers.StringRelatedField(many=True)
     class Meta:
         model = Passwords
-        fields = ['id', 'site_name', 'site_password', 'date_added', 'user']
+        fields = ['id', 'site_name', 'site_password', 'date_added']
         # read_only_fields = ("user",)
