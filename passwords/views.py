@@ -55,6 +55,22 @@ def view_or_update_or_delete_password(request, pk):
         return Response(data=serialzer.data, status=status.HTTP_200_OK)
 
 
+    if request.method == "PUT":
+
+        data = request.data
+
+        password = Passwords.objects.filter(pk=pk)
+
+        password.site_name = data['site_name']
+        password.site_password = data['site_password']
+
+        password.save()
+
+        
+
+
+
+
 
 
 
